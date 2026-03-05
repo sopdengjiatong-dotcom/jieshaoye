@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玫瑰与星辰 · 心灵指南</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body, html {
+            width: 100%; height: 100%;
+            background: #FAF7F2;
+            font-family: 'Noto Serif SC', serif;
+            color: #5C5552;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        /* 动态光晕背景 */
+        .glow {
+            position: fixed; width: 600px; height: 600px;
+            filter: blur(120px); z-index: -1; opacity: 0.3;
+            animation: breathe 12s infinite alternate;
+        }
+        .glow-1 { background: #D6BABA; top: -15%; left: -10%; }
+        .glow-2 { background: #A9B5C2; bottom: -15%; right: -10%; animation-delay: -6s; }
+
+        @keyframes breathe {
+            0% { transform: scale(1); opacity: 0.2; }
+            100% { transform: scale(1.3); opacity: 0.4; }
+        }
+
+        /* 主容器 */
+        .page-wrapper {
+            max-width: 800px; margin: 0 auto;
+            padding: 100px 24px; min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        /* 文章卡片 */
+        .article-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            padding: 60px 80px; border-radius: 4px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.03);
+            width: 100%; position: relative;
+        }
+
+        /* 装饰元素：星辰星图 */
+        .constellation-decor {
+            position: absolute; top: 20px; right: 40px;
+            width: 120px; height: 120px; opacity: 0.2;
+        }
+
+        /* 标题排版 */
+        header { text-align: center; margin-bottom: 60px; }
+        .site-subtitle {
+            font-family: 'Noto Sans SC', sans-serif; font-size: 0.85rem;
+            letter-spacing: 6px; color: #B5AFA9; text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2.4rem; letter-spacing: 8px; color: #4A4643; font-weight: 400; }
+        .divider { width: 40px; height: 1px; background: #D6BABA; margin: 30px auto; }
+
+        /* 正文内容样式 */
+        .content { font-size: 1.15rem; color: #5C5552; text-align: justify; }
+        .content p { margin-bottom: 24px; text-indent: 2em; }
+        .highlight-text { color: #4A4643; font-weight: 500; border-bottom: 1px dashed #D6BABA; }
+        .section-title { font-size: 1.25rem; color: #4A4643; margin-top: 40px; margin-bottom: 15px; text-indent: 0; font-weight: 600; }
+
+        /* 引用块 */
+        blockquote {
+            margin: 40px 0; padding: 20px 40px;
+            border-left: 2px solid #C5B9D1; font-style: italic;
+            color: #7A736E; background: rgba(197, 185, 209, 0.05); text-indent: 0;
+        }
+
+        /* 列表样式 */
+        .feature-list { list-style: none; margin: 20px 0 40px 0; padding-left: 2em; }
+        .feature-list li { position: relative; padding-left: 30px; margin-bottom: 15px; color: #6D6763; line-height: 1.9; }
+        .feature-list li::before { content: '✦'; position: absolute; left: 0; color: #D6BABA; }
+
+        /* 按钮设计 */
+        .cta-container { margin-top: 60px; text-align: center; }
+        .btn-start {
+            padding: 16px 50px; background: transparent;
+            border: 1px solid #C5B9D1; color: #5C5552;
+            font-size: 1.1rem; letter-spacing: 4px; border-radius: 40px;
+            cursor: pointer; transition: all 0.4s ease;
+            font-family: 'Noto Serif SC', serif; text-decoration: none; display: inline-block;
+        }
+        .btn-start:hover {
+            background: #C5B9D1; color: white;
+            box-shadow: 0 15px 30px rgba(197,185,209,0.3); transform: translateY(-3px);
+        }
+
+        /* 底部署名 */
+        footer { margin-top: 80px; text-align: right; font-size: 0.9rem; color: #B5AFA9; }
+        .postmark {
+            width: 80px; height: 80px; border: 1px double #D6BABA; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; text-align: center;
+            font-size: 0.7rem; color: #D6BABA; margin-left: auto; margin-top: 20px;
+            transform: rotate(-15deg); opacity: 0.6; line-height: 1.4;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 700px) {
+            .article-card { padding: 40px 30px; }
+            h1 { font-size: 1.8rem; }
+            .content { font-size: 1.05rem; }
+            .feature-list { padding-left: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <div class="page-wrapper">
+        <header>
+            <p class="site-subtitle">The Roses and Stars</p>
+            <h1>心灵指南</h1>
+            <div class="divider"></div>
+        </header>
+
+        <article class="article-card">
+            <svg class="constellation-decor" viewBox="0 0 100 100">
+                <circle cx="20" cy="40" r="1.5" fill="#D6BABA"/>
+                <circle cx="50" cy="20" r="1.5" fill="#D6BABA"/>
+                <circle cx="80" cy="50" r="1.5" fill="#D6BABA"/>
+                <line x1="20" y1="40" x2="50" y2="20" stroke="#D6BABA" stroke-width="0.5" stroke-dasharray="2 2"/>
+                <line x1="50" y1="20" x2="80" y2="50" stroke="#D6BABA" stroke-width="0.5" stroke-dasharray="2 2"/>
+            </svg>
+
+            <div class="content">
+                <p><span class="highlight-text">每一次向内的凝视，都是一场漫长的朝圣。</span></p>
+                
+                <p>在这个喧嚣的时代，我们懂得如何与世界周旋，却往往在夜深人静时，迷失于自己内心的广袤森林。在这里，没有冷冰冰的医学诊断，只有一场名为“玫瑰与星辰”的自我探索之旅。</p>
+                
+                <p>我们在此为你开启两扇向内探索的门扉。它们是散落在迷雾森林中的路标，也是叩问灵魂的低语：</p>
+
+                <p class="section-title">✦ 照见自我：MBTI人格镜像探索</p>
+                <p>心理学大师荣格曾言：“向外看的人在梦中，向内看的人才清醒。”这项探索并非旨在将你困于四个字母的牢笼，而是一次剥离社会面具、认领内在原型的仪式。在每一次情境的抉择中，它将轻柔地叩问你的本心：</p>
+                
+                <ul class="feature-list">
+                    <li>在熙攘的人潮退去后，你是需要在独处的静谧中修补羽翼，还是在灵魂的碰撞里重燃焰火？</li>
+                    <li>当你凝视这个世界，你是热衷于丈量实体的轮廓，还是沉迷于勾勒未来的隐喻？</li>
+                    <li>面对命运的分岔路口，你是手执理性的利刃披荆斩棘，还是凭借感性的罗盘顺流而下？</li>
+                </ul>
+
+                <p class="section-title">✦ 辨认暗流：四象限爱情人格剖析</p>
+                <p>爱是一面最为澄澈的镜子，照出我们内心最隐秘的荒凉与丰饶。这三十六个关于爱的问题，会缓缓卸下你在亲密关系中的防御：</p>
+                
+                <ul class="feature-list">
+                    <li>在爱的暗夜里，你是否将其视为唯一拯救你的灯塔？</li>
+                    <li>当他人的暖意靠近，你是渴望被燃烧的飞蛾，还是独自漂浮的冰山？</li>
+                    <li>你是能够并肩看海的伴侣，还是在火边颤抖、既渴望又恐惧靠近的受难者？</li>
+                </ul>
+
+                <p>我们记录下你对安全型、焦虑型、回避型与恐惧型依恋的每一次选择，也描摹你认知世界的方式。这并非为了给你贴上标签，因为我们深知，每一层防备的背后，都藏着一个渴望被温柔以待的内在小孩。</p>
+
+                <blockquote>
+                    “万物皆有裂痕，那是光照进来的地方。” —— 莱昂纳德·科恩
+                </blockquote>
+
+                <p>请允许我们，在这个支离破碎的世界里，陪你一起辨认自己的伤痕，找回爱的能力，遇见真实的自己。因为真正的救赎，永远始于你愿意诚实地面对内心。</p>
+            </div>
+
+            <div class="cta-container">
+                <a href="index.html" class="btn-start">开启探索之旅</a>
+            </div>
+
+            <footer>
+                <p>心之所向 · 救赎与成长</p>
+                <p>一名倾听者的致意</p>
+                <div class="postmark">灵魂档案<br>PRIVACY</div>
+            </footer>
+        </article>
+    </div>
+</body>
+</html>
